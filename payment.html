@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection"content="telephone=no, email=no" />
+    <title>有信服务</title>
+    <style>
+        html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+
+            vertical-align: baseline;
+            background: transparent
+        }
+       html{
+           font-size: 62.5%;
+       }
+        body {
+            line-height: 1;
+            background: #FFFFFF;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -moz-tap-highlight-color: rgba(0,0,0,0);
+            -ms-tap-highlight-color: rgba(0,0,0,0);
+            tap-highlight-color: rgba(0,0,0,0);
+            font-family:"PingFangSC-Light", "Helvetica Neue",\5FAE\8F6F\96C5\9ED1,Tohoma;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .title{
+            display: flex;
+            justify-content: center;
+            margin:19px  9.3% 0 9.3%;
+            letter-spacing: 1px;
+        }
+        .title .dot{
+            font-family: PingFangSC-Regular;
+            font-size: 1.8rem;
+            color: #979797;
+            line-height: 15px;
+        }
+        .title img{
+            width: 25px;
+            height: 25px;
+        }
+
+        .title1{
+            display: flex;
+            margin: 1.5% 9.3% 17px 9.3%;
+            letter-spacing: 1px;
+            justify-content: space-between;
+        }
+        .title1 .up-color {
+            font-family: PingFangSC-Regular;
+
+            color: #049AFF;
+        }
+        .divide{
+            background: #F7F7F7;
+            width: 100%;
+            height: 10px;
+        }
+
+       .type-name{
+            margin: 3.4% 0 0 4%;
+            display: flex;
+            justify-content: start;
+        }
+        .content  .left{
+            width: 54px;
+            height: 54px;
+        }
+        .content  .right{
+            margin-left: 3.5%;
+            font-family: PingFangSC-Regular;
+            font-size: 1.8rem;
+            color: #333333;
+            line-height: 18px;
+        }
+        .content  .money{
+            margin-top: 9px;
+            font-size: 1.4rem;
+        }
+
+        .Introduce{
+            box-sizing: border-box;
+            background: #F9FCFE;
+            width: 92%;
+            margin: 16px 4% 0;
+            padding: 14px 2.1% 16px 2.1%;
+            font-family: PingFangSC-Regular;
+            font-size: 1.4rem;
+            color: #617E8F;
+            letter-spacing: 0.3px;
+            line-height: 21px;
+        }
+        .Introduce .desc{
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .Introduce .tit{
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        .ftext .left,.ftext .right{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pay{
+            font-family: PingFangSC-Regular;
+            font-size: 1.7rem;
+            color: #4A4A4A;
+            line-height: 16px;
+            margin-top: 14.1%;
+            text-align: center;
+        }
+        .pay span{
+            font-family: PingFangSC-Medium;
+            font-size: 1.8rem;
+            color: #FAAA06;
+            line-height: 17px;
+        }
+
+        .tips{
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #97ABB6;
+            letter-spacing: 0;
+            line-height: 12px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .tips a{
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #049AFF;
+            letter-spacing: 0;
+            line-height: 12px;
+        }
+
+        .but{
+            background: #049AFF;
+            box-shadow: 1px 4px 7px 0 #A4D3F2;
+            border-radius: 4px;
+            width: 92%;
+            margin: 0 4%;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            margin-top: 10px;
+            font-family: PingFangSC-Regular;
+            font-size: 1.7rem;
+            color: #FFFFFF;
+        }
+        .read{
+            font-family: PingFangSC-Regular;
+            font-size: 1.6rem;
+            color: #049AFF;
+            line-height: 18px;
+            text-align: center;
+            margin: 20px 0;
+            text-decoration:underline;
+            display: none;
+        }
+
+        /*totast*/
+
+        .pop{
+            position:fixed;
+            top:0;left:0;right:0;bottom:0;
+            background-color:#000;
+            opacity: 0.6;
+            z-index: 4;
+            display:none;
+        }
+        .toast {
+            display: none;
+            width: 75%;
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            z-index: 5;
+            color: #333;
+            background: #fff;
+            border-radius: 8px;
+
+        }
+        .toast1 {
+            text-align: center;
+            background: #fff;
+            padding: 5% 7%;
+            line-height: 26px;
+            border-radius: 8px;
+        }
+        .toast1 p{
+            font-size: 1.6rem;
+            padding: 10% 0;
+        }
+        .sureBtn {
+            height: 50px;
+            border-top: 1px solid #ccc;
+            font-size: 1.8rem;
+            line-height: 50px;
+            background-color: #049aff;
+            color: #fff;
+            margin: 0 auto;
+            letter-spacing: 4px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="pay-black">
+    <div class="title">
+        <div>
+            <img src="//mobiccdai.ppdaicdn.com/source/wxpay/image/one.png" width="100%" />
+        </div>
+        <div class="dot">………………</div>
+        <div>
+            <img src="//mobiccdai.ppdaicdn.com/source/wxpay/image/dtwo.png" width="100%" />
+        </div>
+        <div class="dot">………………</div>
+        <div>
+            <img src="//mobiccdai.ppdaicdn.com/source/wxpay/image/three.png" width="100%" />
+        </div>
+    </div>
+    <div class="title1">
+        <div >  身份信息</div>
+        <div class='up-color' >  确认支付</div>
+        <div >  检测报告 </div>
+    </div>
+    <div class="divide"></div>
+    <div id="showB">
+        <div class="content">
+            <div class="type-name">
+                <div class="left">
+                    <img src="//mobiccdai.ppdaicdn.com/source/wxpay/image/read.png" width="100%" />
+                </div>
+                <div class="right">
+                    <p class="part">黑名单检测</p>
+                    <p class="money" >￥ <span id="price"></span> </p>
+                </div>
+            </div>
+        </div>
+        <div class="Introduce">
+            <div class="desc">服务介绍</div>
+            <div class="text">
+                使用黑名单检测服务，将实时检测您是否在放贷机构留有不良信用记录，并给予有针对性的优化建议
+            </div>
+            <div class="desc tit"> 服务优势</div>
+            <div class="text">
+                1.查询快 &nbsp;&nbsp; 2.覆盖全  &nbsp;&nbsp;  3.多维度 &nbsp;&nbsp;   4.数据准
+            </div>
+        </div>
+    </div>
+    <div id="showF">
+        <div class="content">
+            <div class="type-name">
+                <div class="left">
+                    <img src="//mobiccdai.ppdaicdn.com/source/wxpay/image/fread.png" width="100%" />
+                </div>
+                <div class="right">
+                    <p class="part">网贷记录检测</p>
+                    <p class="money" >￥ <span id="fprice" ></span> </p>
+                </div>
+            </div>
+        </div>
+        <div class="Introduce">
+            <div class="desc"> 服务介绍</div>
+            <div class="text">
+                有36.2%的用户逾期是因为忘记了自己的贷款平台名称。有超过70%的用户申请贷款被拒是因为短期内在多家平台进行了借贷
+            </div>
+            <div class="desc tit">  服务优势</div>
+            <div class="ftext">
+                <div class="left">
+                    <div>1.高额逾期费用</div>
+                    <div>2.影响房／车贷的申请</div>
+                </div>
+                <div class="right">
+                    <div>3.生活受限制</div>
+                    <div>4.催收人员的高频催收</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pay">
+        支付金额 ￥ <span id="topicPrice">   </span>
+    </div>
+    <div class="tips">
+        支付即视为同意<a href="//mobiccdai.ppdaicdn.com/source/project/Service.html">《信用精灵服务协议》</a>
+    </div>
+    <div class="but" onclick="submitPayment()"> 立即支付</div>
+    <div class="read" id="read" > 查看已生成报告 </div>
+</div>
+</body>
+</html>
+<script src="//mobiccdai.ppdaicdn.com/source/ccdcps6/js/jquery.min.js"></script>
+<script>
+
+    function GetQueryString(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
+
+    var productId,productCode,whichtype,reportId,bizCode,token,type;
+    var typeToken  = GetQueryString("typeToken");
+    if(typeToken){
+        token=typeToken.split('_')[1];
+        type=typeToken.split('_')[0];
+        bizCode=typeToken.split('_')[2];
+        reportId=typeToken.split('_')[3];
+    }
+
+
+    if(type=='B'){
+        $("#showF").hide();
+        productCode="BlacklistQuery";
+        whichtype=1; //体检类型，1：黑名单报告，2：金融服务报告
+    }else{
+        $("#showB").hide();
+        productCode="FinancialService";
+        whichtype=2;
+    }
+    if(reportId !=null  && reportId !='' && reportId !='null' ){
+        $("#read").show();
+         readReport(reportId);
+    }
+
+    $.ajax({
+        type: 'post',
+        url: "//mcredit.ppdai.com/credit/ICreditPaymentService/productInfo.htm",
+        data:{productCode:productCode},
+        dataType: 'json',
+        success: function(data) {
+
+            if(data.result=='0'){
+                $("#topicPrice").html(data.content.topicPrice);
+                $("#price").html(data.content.price);
+                $("#fprice").html(data.content.price);
+                productId=data.content.productId;
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            msgReminder("网络错误，请稍后重试！")
+        }
+    });
+
+
+    function  readReport(reportId){
+
+         $("#read").click(function () {
+
+            if(type=="B"){
+
+                window.location.href="//mcredit.ppdai.com/report/Blacklist.html?reportid="+reportId;
+            }else{
+                window.location.href="//mcredit.ppdai.com/report/FServices.html?reportid="+reportId;
+            }
+         })
+
+    }
+
+
+
+
+ var buyerUserId = GetQueryString("buyer_user_id");
+
+
+ function  submitPayment(){
+
+     $.ajax({
+         type: "post",
+         url: "//mcredit.ppdai.com/credit/ICreditPaymentService/submitPayment.htm",
+         dataType: 'json',
+         data:{"buyerUserId":buyerUserId,"productId":productId,"tradeNo":bizCode,"token":token},
+         success: function(data) {
+             if(data && data.content) {
+                 data = JSON.parse(data.content);
+                 invokePay({"appId":data.bank_wx_app_id,"timeStamp":data.timestamp,"nonceStr":data.nonce_str,"package":"prepay_id="+data.prepay_id,"signType":"MD5","paySign":data.pay_sign});
+             }
+         },
+         error: function(XMLHttpRequest, textStatus, errorThrown) {
+             alert('网络错误，请稍后再试~');
+             // alert(XMLHttpRequest.readyState+"--"+XMLHttpRequest.status+"--"+textStatus);
+         }
+     });
+ }
+
+    function msgReminder(txt){
+        var _html = "";
+        _html += "<div class='pop'></div>";
+        _html += "<div class='toast'>";
+        _html += "<div class='toast1'>";
+        _html +=  "<p class='copytext'>"+txt+"</p>";
+        _html += "</div>";
+        _html += "<div class='sureBtn'> 确定 </div>";
+        _html += "</div>";
+        $(_html).appendTo($('body'));
+        $(".pop").show();
+        $(".toast").show();
+        $(".sureBtn").on("click",function () {
+            $(".pop").hide();
+            $(".toast").hide();
+        })
+    }
+
+
+    /**
+     * 发起支付
+     *
+     * 'getBrandWCPayRequest', {
+         *      appId":"wx2421b1c4370ec43b",     //公众号名称，由商户传入
+         *      "timeStamp":"1395712654",         //时间戳，自1970年以来的秒数
+         *      "nonceStr":"e61463f8efa94090b1f366cccfbbb444", //随机串
+         *      "package":"prepay_id=u802345jgfjsdfgsdg888",
+         *      "signType":"MD5",         //微信签名方式：
+         *      "paySign":"70EA570631E4BB79628FBCA90534C63FF7FADD89" //微信签名
+         *},
+     *
+     */
+    function invokePay(_payParams) {
+        function onBridgeReady() {
+            WeixinJSBridge.invoke(
+                'getBrandWCPayRequest', _payParams,
+                function(res){
+                    // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                    if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                        //alert("支付成功！开始跳转页面")
+                        setTimeout( window.location.href="//mcredit.ppdai.com/wxCredit/load.html?bizCode="+bizCode+"&type="+whichtype, 1000);
+
+                    }
+                }
+            );
+        }
+        if (typeof WeixinJSBridge == "undefined") {
+            if(document.addEventListener ) {
+                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+            } else if (document.attachEvent) {
+                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+            }
+        } else {
+            onBridgeReady();
+        }
+    }
+
+
+
+</script>

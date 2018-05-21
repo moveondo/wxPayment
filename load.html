@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>信用体检报告</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection"content="telephone=no, email=no" />
+    <style>
+        html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+
+            vertical-align: baseline;
+            background: transparent
+        }
+        html{
+            font-size: 62.5%;
+        }
+        body {
+            line-height: 1;
+            background: #FFFFFF;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -moz-tap-highlight-color: rgba(0,0,0,0);
+            -ms-tap-highlight-color: rgba(0,0,0,0);
+            tap-highlight-color: rgba(0,0,0,0);
+            font-family:"PingFangSC-Light", "Helvetica Neue",\5FAE\8F6F\96C5\9ED1,Tohoma;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header{
+            display: flex;
+            justify-content: center;
+            margin:19px  9.3% 0 9.3%;
+            letter-spacing: 1px;
+        }
+        .header .dot{
+            font-family: PingFangSC-Regular;
+            font-size: 18px;
+            color: #979797;
+            line-height: 15px;
+        }
+        .header img{
+            width: 25px;
+            height: 25px;
+        }
+
+        .title1{
+            display: flex;
+            margin: 1.5% 9.3% 17px 9.3%;
+            letter-spacing: 1px;
+            justify-content: space-between;
+        }
+        .title1 .up-color {
+            font-family: PingFangSC-Regular;
+            color: #049AFF;
+        }
+        .divide{
+            background: #F7F7F7;
+            width: 100%;
+            height: 10px;
+        }
+
+
+        .title{
+            margin-top: 41px;
+            text-align: center;
+        }
+        .title .success{
+            font-family: PingFangSC-Regular;
+            font-size: 2.4rem;
+            color: #049AFF;
+
+        }
+        .title .goon{
+            font-family: PingFangSC-Regular;
+            font-size: 1.6rem;
+            color: #333333;
+            margin-bottom: 26px;
+            margin-top: 5px;
+        }
+
+        .desc{
+            font-family: PingFangSC-Regular;
+            font-size: 1.4rem;
+            color: #97ABB6;
+            letter-spacing: 0;
+            line-height: 21px;
+            margin:191px 10% 7%;
+            text-align: center;
+
+        }
+        .btn{
+            background: #049AFF;
+            box-shadow: 1px 4px 7px 0 #A4D3F2;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 1.8rem;
+            text-align: center;
+            height: 45px;
+            line-height: 45px;
+            width: 90%;
+            margin:  5%;
+        }
+        /*totast*/
+
+        .pop{
+            position:fixed;
+            top:0;left:0;right:0;bottom:0;
+            background-color:#000;
+            opacity: 0.6;
+            z-index: 4;
+            display:none;
+        }
+        .toast {
+            display: none;
+            width: 75%;
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            z-index: 5;
+            color: #333;
+            background: #fff;
+            border-radius: 8px;
+
+        }
+        .toast1 {
+            text-align: center;
+            background: #fff;
+            padding: 5% 7%;
+            line-height: 26px;
+            border-radius: 8px;
+        }
+        .toast1 p{
+            font-size: 1.6rem;
+            padding: 10% 0;
+        }
+        .sureBtn {
+            height: 50px;
+            border-top: 1px solid #ccc;
+            font-size: 1.8rem;
+            line-height: 50px;
+            background-color: #049aff;
+            color: #fff;
+            margin: 0 auto;
+            letter-spacing: 4px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            text-align: center;
+        }
+
+        .circle { width: 140px; height: 140px; position: absolute; border-radius: 50%; background: #0082C8; margin: 0 33%;}
+        .pie_left, .pie_right { width: 140px; height: 140px; position: absolute; top: 0;left: 0; }
+        .left, .right { display: block; width:140px; height:140px; background:#EEF4F9; border-radius: 50%; position: absolute; top: 0px; left: 0px; }
+        .pie_right, .right { clip:rect(0,auto,auto,70px); }
+        .pie_left, .left { clip:rect(0,70px,auto,0); }
+        .mask { width: 121px; height: 121px; border-radius: 50%; left: 10px; top: 10px; background: #FFF; position: absolute; text-align: center; line-height: 110px; font-size: 16px; }
+        @media screen and (max-width: 340px) {
+            .circle{
+                margin: 0 27%;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="header">
+    <div>
+        <img src="//mobiccdai.ppdaicdn.com/source/wxpay/image/one.png" width="100%" />
+    </div>
+    <div class="dot">………………</div>
+    <div>
+        <img src="//mobiccdai.ppdaicdn.com/source/wxpay/image/two.png" width="100%" />
+    </div>
+    <div class="dot">………………</div>
+    <div>
+        <img src="//mobiccdai.ppdaicdn.com/source/wxpay/image/dthree.png" width="100%" />
+    </div>
+</div>
+<div class="title1">
+    <div >  身份信息</div>
+    <div >  确认支付</div>
+    <div class='up-color'>  检测报告 </div>
+</div>
+<div class="divide"></div>
+<div class="title">
+    <p class="success">支付成功</p>
+    <p class="goon">检测中…</p>
+</div>
+<div class="circle"> <div class="pie_left">
+    <div class="left"></div></div>
+    <div class="pie_right">
+        <div class="right"></div>
+    </div>
+    <div class="mask"><span>0</span>%</div>
+</div>
+<div class="desc">
+    <p>我们正在为您检测各项信用数据,</p>
+    <p>可能需要1分钟。</p>
+</div>
+</body>
+</html>
+<script src="//mobiccdai.ppdaicdn.com/source/ccdcps6/js/jquery.min.js"></script>
+<script>
+
+    /****************轮询接口************************/
+
+    loading();
+    var Totalmin=0;
+    var time=setInterval(function(){
+        Totalmin=Totalmin+3000;
+        loading();
+        if(Totalmin==60000){
+            msgReminder("服务超时，请稍后重试！")
+            clearInterval(time);
+        }
+    }, 3000);
+
+
+    /****************画圆************************/
+    $(function() {
+        var num1 = $(this).find('span').text();
+        var time=setInterval(function(){
+            num1=parseInt(num1)+1;
+            num2=parseInt(num1*100/60);
+            $('.circle').each(function(index, el) {
+                $(this).find('span').html(num2);
+                var num = num1* 6;
+                if (num<=180) {
+                    $(this).find('.right').css('transform', "rotate(" + num + "deg)");
+                } else {
+                    $(this).find('.right').css('transform', "rotate(180deg)");
+                    $(this).find('.left').css('transform', "rotate(" + (num - 180) + "deg)");
+                };
+
+            });
+            if(num1==60){
+                clearInterval(time);
+                msgReminder("服务超时，请稍后重试！")
+            }
+        }, 1000);
+
+    });
+
+    function getQueryString(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
+    var bizCode=getQueryString("bizCode");
+    var type=getQueryString("type");
+
+
+
+    function loading() {
+        $.ajax({
+            type: 'post',
+            url: "//mcredit.ppdai.com/creditApi/ICreditReportService/getCreditCheckupStatusV4",
+            data:JSON.stringify({ bizCode :bizCode,type:type}),
+            dataType: 'json',
+            contentType:"application/json",
+            success: function(data) {
+                if(data.result==0 && data.content.reportId !=null){
+                    var reportid=data.content.reportId;
+
+                    if(type=="1"){
+                        window.location.href="//mcredit.ppdai.com/report/Blacklist.html?reportid="+reportid
+                    }else{
+                        window.location.href="//mcredit.ppdai.com/report/FServices.html?reportid="+reportid
+                    }
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                msgReminder("网络错误，请稍后重试！")
+            }
+        });
+    }
+
+
+    function msgReminder(txt){
+        var _html = "";
+        _html += "<div class='pop'></div>";
+        _html += "<div class='toast'>";
+        _html += "<div class='toast1'>";
+        _html +=  "<p class='copytext'>"+txt+"</p>";
+        _html += "</div>";
+        _html += "<div class='sureBtn'> 确定 </div>";
+        _html += "</div>";
+        $(_html).appendTo($('body'));
+        $(".pop").show();
+        $(".toast").show();
+        $(".sureBtn").on("click",function () {
+            $(".pop").hide();
+            $(".toast").hide();
+
+        })
+    }
+
+</script>
