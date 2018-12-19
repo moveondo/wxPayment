@@ -9,7 +9,7 @@
 
 前端：less、ES6、webpack、vue-cli、vue2、vuex、vue-router、axios
 
-后端：java、Mysql  * java代码不在此展示
+后端：java、Mysql   * java，Mysql不在此展示
 
 Vue2：采用最新Vue2的语法:grin:
 
@@ -29,7 +29,6 @@ localStorage(HTML5)：本地存储，保存用户个性化设置。:blush:
 
 CSS3：CSS3动画及样式。:+1:
 
-Mysql:本地存储数据。:smirk:
 
 
 ## Build Setup
@@ -112,12 +111,12 @@ npm run build
 ├── .eslintrc.js		// eslint的配置文件
 ├── load.html      //循环检测接口
 ├── payment.html   //获取服务价格及微信支付
+</pre>
 
+关于项目目录各文件作用更加详细的介绍，请参考：
 
-// 关于项目目录各文件作用更加详细的介绍，请参考：
 https://github.com/moveondo/FullStack-NodeVue/blob/master/knowledge/  
 vue-cli%E8%84%9A%E6%89%8B%E6%9E%B6%E4%B9%8B%E5%90%8E%E7%9A%84%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90.md
-</pre>
 
 
 #### 注：此项目纯属个人爱好及代码测试
